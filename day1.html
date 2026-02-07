@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rose Day 🌹</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --rose-pink: #ff6b9d;
+            --soft-pink: #ffc2d1;
+            --cream: #fff5f7;
+            --gold: #d4af37;
+            --deep-pink: #c9184a;
+            --lavender: #e5d4ed;
+            --text-dark: #2d1b2e;
+        }
+
+```
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: 'Cormorant Garamond', serif;
+        background: linear-gradient(135deg, var(--cream) 0%, var(--lavender) 100%);
+        min-height: 100vh;
+        padding: 40px 20px;
+    }
+
+    .letter-page {
+        max-width: 1000px;
+        margin: 0 auto;
+        background: rgba(255, 255, 255, 0.95);
+        border-radius: 30px;
+        padding: 60px 40px;
+        box-shadow: 0 30px 90px rgba(0,0,0,0.2);
+        position: relative;
+    }
+
+    .back-button {
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        padding: 12px 30px;
+        background: var(--rose-pink);
+        color: white;
+        text-decoration: none;
+        border-radius: 25px;
+        font-size: 1.1rem;
+        transition: all 0.3s;
+        display: inline-block;
+    }
+
+    .back-button:hover {
+        background: var(--deep-pink);
+        transform: translateX(-5px);
+    }
+
+    h2 {
+        font-family: 'Playfair Display', serif;
+        font-size: 3rem;
+        color: var(--deep-pink);
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .date {
+        font-family: 'Dancing Script', cursive;
+        font-size: 1.5rem;
+        color: var(--rose-pink);
+        text-align: center;
+        margin-bottom: 40px;
+    }
+
+    .letter-text {
+        font-size: 1.3rem;
+        line-height: 1.8;
+        color: var(--text-dark);
+        margin-bottom: 40px;
+    }
+
+    .photo-collage {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 25px;
+        margin: 40px 0;
+    }
+
+    .photo-item {
+        position: relative;
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+        transition: all 0.4s;
+    }
+
+    .photo-item:hover {
+        transform: scale(1.05) rotate(2deg);
+        box-shadow: 0 20px 50px rgba(255, 107, 157, 0.4);
+    }
+
+    .photo-item img {
+        width: 100%;
+        height: 300px;
+        object-fit: cover;
+        display: block;
+    }
+
+    .photo-caption {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+        color: white;
+        padding: 20px;
+        font-family: 'Dancing Script', cursive;
+        font-size: 1.2rem;
+        text-align: center;
+        transform: translateY(100%);
+        transition: transform 0.3s;
+    }
+
+    .photo-item:hover .photo-caption {
+        transform: translateY(0);
+    }
+
+    /* Surprise Button */
+    .surprise-btn {
+        display: inline-block;
+        padding: 20px 50px;
+        font-family: 'Playfair Display', serif;
+        font-size: 1.5rem;
+        background: linear-gradient(135deg, var(--gold), #f4a261);
+        color: white;
+        text-decoration: none;
+        border-radius: 50px;
+        transition: all 0.4s;
+        box-shadow: 0 10px 30px rgba(212, 175, 55, 0.4);
+        margin: 30px 0;
+    }
+
+    .surprise-btn:hover {
+        transform: translateY(-8px) scale(1.08);
+        box-shadow: 0 15px 45px rgba(212, 175, 55, 0.6);
+    }
+
+    /* Surprise Modal */
+    .surprise-modal {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0,0,0,0.85);
+        display: none;
+        align-items: center;
+        justify-content: center;
+        z-index: 1000;
+    }
+
+    .surprise-modal:target {
+        display: flex;
+    }
+
+    .modal-content {
+        background: linear-gradient(135deg, #fff 0%, #fff5f7 100%);
+        padding: 50px;
+        max-width: 700px;
+        border-radius: 30px;
+        box-shadow: 0 30px 90px rgba(0,0,0,0.5);
+        text-align: center;
+        position: relative;
+    }
+
+    .modal-content h3 {
+        font-family: 'Playfair Display', serif;
+        font-size: 2.5rem;
+        color: var(--deep-pink);
+        margin-bottom: 30px;
+    }
+
+    .modal-content img {
+        max-width: 100%;
+        border-radius: 20px;
+        margin: 25px 0;
+        box-shadow: 0 15px 50px rgba(0,0,0,0.3);
+    }
+
+    .close-modal {
+        position: absolute;
+        top: 15px;
+        right: 25px;
+        font-size: 40px;
+        color: var(--deep-pink);
+        text-decoration: none;
+        transition: all 0.3s;
+    }
+
+    .close-modal:hover {
+        color: var(--rose-pink);
+        transform: rotate(90deg);
+    }
+
+    .yesno-buttons {
+        display: flex;
+        gap: 30px;
+        justify-content: center;
+        margin-top: 30px;
+        flex-wrap: wrap;
+    }
+
+    .yes-btn, .no-btn {
+        padding: 20px 60px;
+        font-size: 1.6rem;
+        color: white;
+        text-decoration: none;
+        border-radius: 50px;
+        transition: all 0.4s;
+        font-family: 'Cormorant Garamond', serif;
+        display: inline-block;
+    }
+
+    .yes-btn {
+        background: linear-gradient(135deg, #90ee90, #228b22);
+        box-shadow: 0 10px 30px rgba(0,255,0,0.3);
+    }
+
+    .yes-btn:hover {
+        transform: scale(1.15) rotate(-5deg);
+        box-shadow: 0 15px 50px rgba(0,255,0,0.5);
+    }
+
+    .no-btn {
+        background: linear-gradient(135deg, #ffcccb, #dc143c);
+        box-shadow: 0 10px 30px rgba(255,0,0,0.3);
+    }
+
+    .no-btn:hover {
+        transform: scale(0.9);
+    }
+
+    @media (max-width: 768px) {
+        .letter-page {
+            padding: 40px 25px;
+        }
+        h2 {
+            font-size: 2.2rem;
+        }
+        .photo-collage {
+            grid-template-columns: 1fr;
+        }
+        .modal-content {
+            margin: 10% 20px;
+            padding: 30px;
+        }
+        .yesno-buttons {
+            flex-direction: column;
+            align-items: center;
+        }
+    }
+</style>
+```
+
+</head>
+<body>
+    <div class="letter-page">
+        <a href="index.html" class="back-button">← Back to Home</a>
+
+```
+    <h2>🌹 Rose Day 🌹</h2>
+    <p class="date">February 7, 2026</p>
+    
+    <div class="letter-text">
+        <p style="margin-bottom: 20px;">My dearest love,</p>
+        <p style="margin-bottom: 20px;">Just like this rose blooms with beauty, my love for you grows stronger every single day. Today marks the beginning of our special week, and I want you to know that you are the most precious person in my life.</p>
+        <p style="margin-bottom: 20px;">Every moment with you feels like a dream come true. Your smile lights up my world, and your laughter is my favorite melody. You've brought so much color and joy into my life, just like a beautiful garden of roses.</p>
+    </div>
+
+    <div class="photo-collage">
+        <div class="photo-item">
+            <img src="images/rose-day-1.jpg" alt="Our Memory 1" onerror="this.src='https://via.placeholder.com/400x300/ff6b9d/ffffff?text=rose-day-1.jpg'">
+            <div class="photo-caption">Our first date 💕</div>
+        </div>
+        <div class="photo-item">
+            <img src="images/rose-day-2.jpg" alt="Our Memory 2" onerror="this.src='https://via.placeholder.com/400x300/ffc2d1/ffffff?text=rose-day-2.jpg'">
+            <div class="photo-caption">When you smiled at me ✨</div>
+        </div>
+        <div class="photo-item">
+            <img src="images/rose-day-3.jpg" alt="Our Memory 3" onerror="this.src='https://via.placeholder.com/400x300/e5d4ed/ffffff?text=rose-day-3.jpg'">
+            <div class="photo-caption">Perfect moment 🌹</div>
+        </div>
+    </div>
+
+    <div style="text-align: center; margin: 40px 0;">
+        <a href="#surprise" class="surprise-btn">🌹 Do you want a surprise? 🌹</a>
+    </div>
+
+    <div style="text-align: center; margin-top: 50px;">
+        <p style="font-size: 1.5rem; font-style: italic; color: var(--deep-pink);">Forever yours,<br>Your Love 💕</p>
+    </div>
+</div>
+
+<!-- Surprise Modal -->
+<div id="surprise" class="surprise-modal">
+    <div class="modal-content">
+        <a href="#" class="close-modal">&times;</a>
+        <h3>Do you accept this rose? 🌹</h3>
+        <img src="images/surprise-rose-photo.jpg" alt="Me with Rose" onerror="this.src='https://via.placeholder.com/500x600/ff6b9d/ffffff?text=surprise-rose-photo.jpg'">
+        <div class="yesno-buttons">
+            <a href="#accepted" class="yes-btn">YES! 💕</a>
+            <a href="#" class="no-btn">No</a>
+        </div>
+    </div>
+</div>
+
+<!-- Background Music -->
+<audio autoplay loop>
+    <source src="music/rose-day-music.mp3" type="audio/mpeg">
+</audio>
+```
+
+</body>
+</html>
