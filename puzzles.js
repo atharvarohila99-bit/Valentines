@@ -19,9 +19,9 @@ function showPuzzle(day) {
         1: {
             type: "word",
             title: "Rose Day 🌹",
-            question: "What's our special word that means 'I love you'?",
-            hint: "Think about what I always say to you...",
-            answer: "forever"
+            question: "What do you call me?",
+            hint: "What nickname have you kept for me?",
+            answer: "sunshine"
         },
         2: {
             type: "memory",
@@ -33,10 +33,10 @@ function showPuzzle(day) {
             title: "Chocolate Day 🍫",
             question: "What's my favorite thing about you?",
             options: [
-                "Your beautiful smile",
+                "Your starry eyes",
                 "Your kind heart",
                 "Everything about you",
-                "Your amazing laugh"
+                "Your melodious voice"
             ],
             correctAnswer: 2
         },
@@ -68,15 +68,15 @@ function showPuzzle(day) {
             type: "word",
             title: "Kiss Day 💋",
             question: "What makes my heart race?",
-            hint: "Think about what you give me...",
+            hint: "Think about what you we had in the photobooth (plural)...",
             answer: "kisses"
         },
         8: {
             type: "word",
             title: "Valentine's Day ❤️",
-            question: "What are we?",
-            hint: "Two words that describe our relationship...",
-            answer: "soulmates"
+            question: "What are you to me?",
+            hint: "What do I call you, my love?",
+            answer: "my iris"
         }
     };
 
